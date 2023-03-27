@@ -1,191 +1,55 @@
+import comonApi from "@/api/comonApi";
 import { defineStore } from "pinia";
 
 export interface Cases {
-    no?: number
+    //编号
+    id?: number
+    //名字
     firstName?: string
+    //姓氏
     lastName?: string
-    loanLimit?: number
-    loanCompany?: string
-    repaymentPeriod?: string
-    paymentDate?: string
+    //借款金额
+    loan_amount?: number
+    //贷款公司
+    company?: string
+    //借款日期
+    disbursement_date?: string
+    //还款日期
+    repayment_period?: string
+    //状态
     status?: string
+    //根据状态的类型
+    type?:string
     operate?: string
 }
 
 export default defineStore('case',{
     state:()=>({
         currentPage:1,
-        caselist:[
-            {
-                no: 1,
-                firstName: "李",
-                lastName:"大哥",
-                loanLimit:165161,
-                loanCompany:"faxsa",
-                repaymentPeriod: "2022-03-16",
-                paymentDate: "2022-04-12",
-                status: "成功",
-                operate: '导出'
-            },
-            {
-                no: 2,
-                firstName: "dsa",
-                lastName:"大哥",
-                loanLimit:165161,
-                loanCompany:"faxxsaa",
-                repaymentPeriod: "2022-04-16",
-                paymentDate: "2022-01-12",
-                status: "成功",
-                operate: '导出'
-            },
-            {
-                no: 3,
-                firstName: "李",
-                lastName:"大哥",
-                loanLimit:165161,
-                loanCompany:"faxsa",
-                repaymentPeriod: "2022-03-16",
-                paymentDate: "2022-04-12",
-                status: "成功",
-                operate: '导出'
-            },
-            {
-                no: 4,
-                firstName: "李",
-                lastName:"大哥",
-                loanLimit:165161,
-                loanCompany:"faxsa",
-                repaymentPeriod: "2022-03-16",
-                paymentDate: "2022-04-12",
-                status: "成功",
-                operate: '导出'
-            },
-            {
-                no: 5,
-                firstName: "李",
-                lastName:"大哥",
-                loanLimit:165161,
-                loanCompany:"faxsa",
-                repaymentPeriod: "2022-03-16",
-                paymentDate: "2022-04-12",
-                status: "成功",
-                operate: '导出'
-            },
-            {
-                no: 6,
-                firstName: "李",
-                lastName:"大哥",
-                loanLimit:165161,
-                loanCompany:"faxsa",
-                repaymentPeriod: "2022-03-16",
-                paymentDate: "2022-04-12",
-                status: "成功",
-                operate: '导出'
-            },
-            {
-                no: 7,
-                firstName: "李",
-                lastName:"大哥",
-                loanLimit:165161,
-                loanCompany:"faxsa",
-                repaymentPeriod: "2022-03-16",
-                paymentDate: "2022-04-12",
-                status: "成功",
-                operate: '导出'
-            },
-            {
-                no: 8,
-                firstName: "李",
-                lastName:"大哥",
-                loanLimit:165161,
-                loanCompany:"faxsa",
-                repaymentPeriod: "2022-03-16",
-                paymentDate: "2022-04-12",
-                status: "成功",
-                operate: '导出'
-            },
-            {
-                no: 9,
-                firstName: "李",
-                lastName:"大哥",
-                loanLimit:165161,
-                loanCompany:"faxsa",
-                repaymentPeriod: "2022-03-16",
-                paymentDate: "2022-04-12",
-                status: "成功",
-                operate: '导出'
-            },
-            {
-                no: 10,
-                firstName: "李",
-                lastName:"大哥",
-                loanLimit:165161,
-                loanCompany:"faxsa",
-                repaymentPeriod: "2022-03-16",
-                paymentDate: "2022-04-12",
-                status: "成功",
-                operate: '导出'
-            },
-            {
-                no: 11,
-                firstName: "李",
-                lastName:"大哥",
-                loanLimit:165161,
-                loanCompany:"faxsa",
-                repaymentPeriod: "2022-03-16",
-                paymentDate: "2022-04-12",
-                status: "成功",
-                operate: '导出'
-            },
-            {
-                no: 12,
-                firstName: "李",
-                lastName:"大哥",
-                loanLimit:165161,
-                loanCompany:"faxsa",
-                repaymentPeriod: "2022-03-16",
-                paymentDate: "2022-04-12",
-                status: "成功",
-                operate: '导出'
-            },
-            {
-                no: 13,
-                firstName: "李",
-                lastName:"大哥",
-                loanLimit:165161,
-                loanCompany:"faxsa",
-                repaymentPeriod: "2022-03-16",
-                paymentDate: "2022-04-12",
-                status: "成功",
-                operate: '导出'
-            },
-            {
-                no: 14,
-                firstName: "李",
-                lastName:"大哥",
-                loanLimit:165161,
-                loanCompany:"faxsa",
-                repaymentPeriod: "2022-03-16",
-                paymentDate: "2022-04-12",
-                status: "成功",
-                operate: '导出'
-            },
-            {
-                no: 15,
-                firstName: "李",
-                lastName:"大哥",
-                loanLimit:165161,
-                loanCompany:"faxsa",
-                repaymentPeriod: "2022-03-16",
-                paymentDate: "2022-04-12",
-                status: "成功",
-                operate: '导出'
-            },
-        ] as Cases[]
+        dataTable:[] as Cases[]
     }),
     getters:{
         renderList(state){
-            return state.caselist
+            return state.dataTable
+        }
+    },
+    actions:{
+        async initDataTable(){
+            const data = await comonApi.getCases()
+            const dataTable = data.map(item => {
+               return  {
+                id:item.id,
+                firstName:item.client.first_name,
+                lastName:item.client.last_name,
+                company:item.company?.name ?? "未选择服务提供商",
+                loan_amount:item.loan_amount,
+                disbursement_date:item.disbursement_date,
+                repayment_period:item.repayment_period,
+                status:item.lbo_case_status.label_tc,
+                type:item.lbo_case_status.label_en
+               } as Cases
+            });
+            this.dataTable.push(...dataTable)
         }
     }
 })

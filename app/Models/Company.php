@@ -9,4 +9,8 @@ class Company extends Model
 {
     use HasFactory;
     public $timestamps = FALSE;
+    public function cases()
+    {
+        $this->hasMany(Cases::class);
+    }
 }

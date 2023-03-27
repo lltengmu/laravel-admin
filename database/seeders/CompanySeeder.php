@@ -15,14 +15,6 @@ class CompanySeeder extends Seeder
     {
         $data = [
             [
-                'name' => '',
-                'email' => '',
-                'password' => '',
-                'contact' => '',
-                'create_datetime' => date('Y-m-d h:m:s'),
-                'update_datetime' => date('Y-m-d h:m:s'),
-            ],
-            [
                 'name' => 'xxxx hk',
                 'email' => 'bamk@gmail.com',
                 'password' => sha1(123123),

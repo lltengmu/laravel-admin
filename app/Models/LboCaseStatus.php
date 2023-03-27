@@ -9,4 +9,9 @@ class LboCaseStatus extends Model
 {
     use HasFactory;
     public $timestamps = FALSE;
+
+    public function cases()
+    {
+        return $this->hasMany(Cases::class);
+    }
 }

@@ -17,8 +17,23 @@ class CasesController extends Controller
      */
     public function index()
     {
-        //return Cases::with('client')->get();
-        return Client::with('cases')->get();
+        return Cases::with('client:id,first_name,last_name')
+                    ->with('company:id,name')
+                    ->with('LboCaseStatus:id,label_tc,label_en')
+                    ->select([
+                    'id',
+                    'sys_id',
+                    'client_id',
+                    'company_id',
+                    'case_status',
+                    'loan_amount',
+                    'payment_amount',
+                    'purpose',
+                    'case_remark',
+                    'disbursement_date',
+                    'repayment_period',
+                    'status'
+                ])->get();
     }
 
     /**

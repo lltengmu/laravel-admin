@@ -27,8 +27,6 @@ Route::post('register',RegisterController::class);
 Route::post('login',LoginController::class);
 Route::post('code/guest',[ValidateCodeController::class,'guest']);
 Route::put('config/{name}',[ConfigController::class,'update']);
-Route::get('/options',OptionsController::class);
-
 /**
  * 资源api
  */

@@ -14,6 +14,6 @@ class CasesSeeder extends Seeder
      */
     public function run()
     {
-        Cases::factory(50)->create();
+        Cases::factory(20)->create();
     }
 }
