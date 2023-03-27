@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Client;
+use App\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CasesFactory extends Factory
@@ -13,11 +15,12 @@ class CasesFactory extends Factory
      */
     public function definition()
     {
+        $clientsIdList = Client::select('id')->get();
         return [
             'sys_id'    => substr($this->faker->sha1(),1,10),
-            'client_id' => mt_rand(0,100),
-            'case_status' => mt_rand(1,4),
-            'service_provider' => mt_rand(1,6),
+            'client_id' => $this->faker->randomElement($clientsIdList),
+            'case_status' => mt_rand(1,5),
+            'service_provider' => mt_rand(0,2),
             'loan_amount' => mt_rand(1,10000),
             'payment_amount' => mt_rand(1,10000),
             'purpose' => mt_rand(1,3),

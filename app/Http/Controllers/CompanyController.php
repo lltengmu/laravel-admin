@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cases;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreCasesRequest;
-use App\Http\Requests\UpdateCasesRequest;
+use App\Models\Company;
+use App\Http\Requests\StoreCompanyRequest;
+use App\Http\Requests\UpdateCompanyRequest;
 
-class CasesController extends Controller
+class CompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class CasesController extends Controller
      */
     public function index()
     {
-        return Cases::all();
+        //
     }
 
     /**
@@ -32,10 +31,10 @@ class CasesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCasesRequest  $request
+     * @param  \App\Http\Requests\StoreCompanyRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCasesRequest $request)
+    public function store(StoreCompanyRequest $request)
     {
         //
     }
@@ -43,10 +42,10 @@ class CasesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Cases  $cases
+     * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function show(Cases $cases)
+    public function show(Company $company)
     {
         //
     }
@@ -54,10 +53,10 @@ class CasesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Cases  $cases
+     * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cases $cases)
+    public function edit(Company $company)
     {
         //
     }
@@ -65,11 +64,11 @@ class CasesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCasesRequest  $request
-     * @param  \App\Models\Cases  $cases
+     * @param  \App\Http\Requests\UpdateCompanyRequest  $request
+     * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCasesRequest $request, Cases $cases)
+    public function update(UpdateCompanyRequest $request, Company $company)
     {
         //
     }
@@ -77,10 +76,10 @@ class CasesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Cases  $cases
+     * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cases $cases)
+    public function destroy(Company $company)
     {
         //
     }
