@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cases;
+use App\Models\Client;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCasesRequest;
 use App\Http\Requests\UpdateCasesRequest;
@@ -16,7 +17,8 @@ class CasesController extends Controller
      */
     public function index()
     {
-        return Cases::all();
+        //return Cases::with('client')->get();
+        return Client::with('cases')->get();
     }
 
     /**

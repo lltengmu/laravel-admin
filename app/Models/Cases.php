@@ -11,6 +11,6 @@ class Cases extends Model
     public $timestamps = FALSE;
     public function client()
     {
-        return $this->belongTo(Client::class);
+        return $this->belongsTo(Client::class);
     }
 }

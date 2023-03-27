@@ -11,4 +11,8 @@ class Client extends Model
     //HasApitoken 使用这个类，client类就具有生成token的方法
     use HasFactory,HasApiTokens;
     public $timestamps = FALSE;
+    public function cases()
+    {
+        return $this->hasMany(Cases::class);
+    }
 }
