@@ -3,8 +3,12 @@
         <template #header>
             header
         </template>
-        <el-table ref="multipleTableRef" :row-style="handleRowStyle" :header-row-style="handleHeaderRowStyle" :highlight-current-row="true" height="680px"
-            :data="data" @selection-change="handleSelectionChange">
+        <el-table ref="multipleTableRef"
+            :row-style="caseStore.handleRowStyle"
+            :header-row-style="caseStore.handleHeaderRowStyle"
+            :highlight-current-row="true" height="680px"
+            :data="caseStore.renderList"
+            @selection-change="handleSelectionChange">
             <el-table-column type="selection" width="30px" />
             <el-table-column property="id" label="编号" width="60px" />
             <el-table-column property="firstName" label="名字" width="80px" />
@@ -34,32 +38,13 @@
 import useCaseStore,{ Cases } from '@/store/caseStore'
 import { ElTable, ColumnStyle } from 'element-plus'
 
-const data = useCaseStore().renderList;
+const caseStore = useCaseStore()
 //获取数据
 useCaseStore().initDataTable();
 const multipleTableRef = ref<InstanceType<typeof ElTable>>()
 const multipleSelection = ref<Cases[]>([])
-const toggleSelection = (rows?: Cases[]) => {
-    if (rows) {
-        rows.forEach((row) => {
-            // TODO: improvement typing when refactor table
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-expect-error
-            multipleTableRef.value!.toggleRowSelection(row, undefined)
-        })
-    } else {
-        multipleTableRef.value!.clearSelection()
-    }
-}
-const handleSelectionChange = (val: Cases[]) => {
-    multipleSelection.value = val
-}
-const handleRowStyle = (): ColumnStyle<any> => {
-    return { textAlign: "left", padding:'10px',fontSize:'14px',color:"#3A3F63" ,cursor:"pointer",zIndex:99}
-}
-const handleHeaderRowStyle = (): ColumnStyle<any> => {
-    return { textAlign: "left",color:"#3A3F63" }
-}
+const handleSelectionChange = (val: Cases[]) => multipleSelection.value = val
+
 </script>
 
 <style lang="scss">

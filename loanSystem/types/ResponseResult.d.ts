@@ -18,12 +18,36 @@ interface CaseInterface {
     disbursement_date: string,
     repayment_period: string,
     status: number,
+    create_datetime:string
     client: {
-        id: number,
+        id: 6,
         first_name: string,
-        last_name:string
+        last_name: string,
+        appellation: number,
+        password: string,
+        HKID: number,
+        date_of_birth: string,
+        marital_status: number,
+        mobile: number,
+        email: string,
+        nationality: string,
+        area: string,
+        addres: string,
+        address1: string,
+        address2: string,
+        building: string,
+        floor: string,
+        unit: string,
+        job_status: number,
+        salary: number,
+        company_name: string,
+        company_addres: string,
+        create_datetime: string,
+        update_datetime: string,
+        last_login_datetime: string,
+        status: number
     },
-    company: {
+    company?: {
         id: number,
         name: string
     }

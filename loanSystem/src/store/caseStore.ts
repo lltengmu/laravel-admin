@@ -1,6 +1,6 @@
 import comonApi from "@/api/comonApi";
 import { defineStore } from "pinia";
-
+import { ElTable, ColumnStyle } from 'element-plus'
 export interface Cases {
     //编号
     id?: number
@@ -50,6 +50,24 @@ export default defineStore('case',{
                } as Cases
             });
             this.dataTable.push(...dataTable)
+        },
+        //表头样式定义
+        handleHeaderRowStyle():ColumnStyle<any>{
+            return {
+                textAlign: "left",
+                color:"#3A3F63"
+            }
+        },
+        //行样式
+        handleRowStyle():ColumnStyle<any>{
+            return {
+                textAlign: "left",
+                padding:'10px',
+                fontSize:'14px',
+                color:"#3A3F63" ,
+                cursor:"pointer",
+                zIndex:99
+            }
         }
-    }
+    },
 })

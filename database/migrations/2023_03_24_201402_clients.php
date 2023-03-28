@@ -21,7 +21,7 @@ class Clients extends Migration
             $table->string('password',100)->nullable()->comment('密码');
             $table->string('HKID')->nullable()->comment('香港身份证号');
             $table->date('date_of_birth')->nullable()->comment('生日');
-            $table->integer('marital_status')->nullable();
+            $table->integer('marital_status')->nullable()->comment('尚未明确');
             $table->string('mobile',11)->nullable()->comment('手机号');
             $table->string('email',100)->nullable()->comment('邮箱');
             $table->string('nationality',100)->nullable()->comment('国籍');

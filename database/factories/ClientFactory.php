@@ -21,6 +21,7 @@ class ClientFactory extends Factory
             'password'   => sha1(123456),
             'HKID'       => mt_rand(0, 100000),
             'date_of_birth' => $this->faker->date(),
+            'marital_status' => mt_rand(0,10),
             'mobile'     => mt_rand(0, 100000000000),
             'email'      => $this->faker->email(),
             'nationality' => $this->faker->country(),

@@ -17,23 +17,90 @@ class CasesController extends Controller
      */
     public function index()
     {
-        return Cases::with('client:id,first_name,last_name')
-                    ->with('company:id,name')
-                    ->with('LboCaseStatus:id,label_tc,label_en')
-                    ->select([
-                    'id',
-                    'sys_id',
-                    'client_id',
-                    'company_id',
-                    'case_status',
-                    'loan_amount',
-                    'payment_amount',
-                    'purpose',
-                    'case_remark',
-                    'disbursement_date',
-                    'repayment_period',
-                    'status'
-                ])->get();
+        return Cases::with(['client' => function ($query) {
+            $query->select([
+                'id',
+                "first_name",
+                "last_name",
+                "appellation",
+                "password",
+                "HKID",
+                "date_of_birth",
+                "marital_status",
+                "mobile",
+                "email",
+                "nationality",
+                "area",
+                "addres",
+                "address1",
+                "address2",
+                "building",
+                "floor",
+                "unit",
+                "job_status",
+                "salary",
+                "company_name",
+                "company_addres",
+                "create_datetime",
+                "update_datetime",
+                "last_login_datetime",
+                "status"
+            ]);
+        }])
+        ->with('company:id,name')
+        ->with('LboCaseStatus:id,label_tc,label_en')
+        ->select([
+            'id',
+            'sys_id',
+            'client_id',
+            'case_status',
+            'company_id',
+            'loan_amount',
+            'payment_amount',
+            'purpose',
+            'case_remark',
+            'disbursement_date',
+            'repayment_period',
+            'status',
+            'create_datetime'
+        ])
+        ->get();
+        // return Cases::with('client:id,first_name,last_name,appellation,password,HKID,date_of_birth,marital_status,mobile,email,nationality,area,addres,address1,address2,building,floor,unit,job_status,salary,company_name,company_addres,create_datetime,update_datetime,last_login_datetime,status')
+        //             ->with('company:id,name')
+        //             ->with('LboCaseStatus:id,label_tc,label_en')
+        //             ->select([
+        //                 'id',
+        //                 'sys_id',
+        //                 'client_id',
+        //                 'case_status',
+        //                 'company_id',
+        //                 'loan_amount',
+        //                 'payment_amount',
+        //                 'purpose',
+        //                 'case_remark',
+        //                 'disbursement_date',
+        //                 'repayment_period',
+        //                 'status',
+        //                 'create_datetime'
+        //                 ])
+        //             ->get();
+        // return Cases::with('client:id,first_name,last_name')
+        //             ->with('company:id,name')
+        //             ->with('LboCaseStatus:id,label_tc,label_en')
+        //             ->select([
+        //             'id',
+        //             'sys_id',
+        //             'client_id',
+        //             'company_id',
+        //             'case_status',
+        //             'loan_amount',
+        //             'payment_amount',
+        //             'purpose',
+        //             'case_remark',
+        //             'disbursement_date',
+        //             'repayment_period',
+        //             'status'
+        //         ])->get();
     }
 
     /**
