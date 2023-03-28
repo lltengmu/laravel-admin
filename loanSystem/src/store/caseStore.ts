@@ -1,7 +1,7 @@
 import comonApi from "@/api/comonApi";
 import { defineStore } from "pinia";
 import { ElTable, ColumnStyle } from 'element-plus'
-export interface Cases {
+export interface CasesTable {
     //编号
     id?: number
     //名字
@@ -26,30 +26,29 @@ export interface Cases {
 export default defineStore('case',{
     state:()=>({
         currentPage:1,
-        dataTable:[] as Cases[]
+        casesList:[] as CasesInterface[]
     }),
     getters:{
-        renderList(state){
-            return state.dataTable
+        caseTableData(state){
+            return state.casesList.map(item=>{
+                return {
+                    id:item.id,
+                    firstName:item.client.first_name,
+                    lastName:item.client.last_name,
+                    loan_amount:item.loan_amount,
+                    company:item.company?.name?? "未选择服务提供商",
+                    disbursement_date:item.disbursement_date,
+                    repayment_period:item.repayment_period,
+                    status:item.lbo_case_status.label_tc,
+                    type:item.lbo_case_status.label_en
+                } as CasesTable
+            })
         }
     },
     actions:{
         async initDataTable(){
-            const data = await comonApi.getCases()
-            const dataTable = data.map(item => {
-               return  {
-                id:item.id,
-                firstName:item.client.first_name,
-                lastName:item.client.last_name,
-                company:item.company?.name ?? "未选择服务提供商",
-                loan_amount:item.loan_amount,
-                disbursement_date:item.disbursement_date,
-                repayment_period:item.repayment_period,
-                status:item.lbo_case_status.label_tc,
-                type:item.lbo_case_status.label_en
-               } as Cases
-            });
-            this.dataTable.push(...dataTable)
+            const cases = await comonApi.getCases()
+            this.casesList.push(...cases)
         },
         //表头样式定义
         handleHeaderRowStyle():ColumnStyle<any>{
@@ -62,7 +61,7 @@ export default defineStore('case',{
         handleRowStyle():ColumnStyle<any>{
             return {
                 textAlign: "left",
-                padding:'10px',
+                padding:0,
                 fontSize:'14px',
                 color:"#3A3F63" ,
                 cursor:"pointer",

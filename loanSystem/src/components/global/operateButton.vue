@@ -1,5 +1,8 @@
 <template>
-    <button :class="props.type">{{ props.labelText }}</button>
+    <button :class="props.type">
+        <span>{{ props.labelText }}</span>
+        <span class="fas fa-angle-down ml-1 mt-1 text-gray-500"></span>
+    </button>
 </template>
 
 <script setup lang="ts">

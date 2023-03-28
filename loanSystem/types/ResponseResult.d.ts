@@ -5,7 +5,7 @@ interface ResponseResult<T> {
     data: T
 }
 
-interface CaseInterface {
+interface CasesInterface {
     id: number,
     sys_id: string,
     client_id: number,
