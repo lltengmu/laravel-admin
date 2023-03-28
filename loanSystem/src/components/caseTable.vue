@@ -57,8 +57,4 @@ const handleSelectionChange = (val: CasesTable[]) => multipleSelection.value = v
     justify-content: flex-start;
     align-items: center;
 }
-.el-table__cell{
-    height: 70px;
-    padding: 0 !important;
-}
 </style>

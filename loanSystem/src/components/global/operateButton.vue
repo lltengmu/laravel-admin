@@ -21,7 +21,7 @@ button{
     padding: 0 10px;
     height: 30px;
     border-radius: 30px;
-    box-shadow: 0px 4px 12px rgba(179, 192, 231, 0.3);
+    box-shadow: 4px 4px 12px rgba(179, 192, 231, 0.3);
     transition: .3s ease;
     &:hover{
         background: rgba(179, 192, 231, 0.3);
