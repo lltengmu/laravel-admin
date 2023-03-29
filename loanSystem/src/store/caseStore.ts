@@ -19,54 +19,61 @@ export interface CasesTable {
     //状态
     status?: string
     //根据状态的类型
-    type?:string
+    type?: string
     operate?: string
 }
 
-export default defineStore('case',{
-    state:()=>({
-        currentPage:1,
-        casesList:[] as CasesInterface[]
+export default defineStore('case', {
+    state: () => ({
+        currentPage: 1,
+        casesList: [] as CasesInterface[]
     }),
-    getters:{
-        caseTableData(state){
-            return state.casesList.map(item=>{
+    getters: {
+        caseTableData(state) {
+            return state.casesList.map(item => {
                 return {
-                    id:item.id,
-                    firstName:item.client.first_name,
-                    lastName:item.client.last_name,
-                    loan_amount:item.loan_amount,
-                    company:item.company?.name?? "未选择服务提供商",
-                    disbursement_date:item.disbursement_date,
-                    repayment_period:item.repayment_period,
-                    status:item.lbo_case_status.label_tc,
-                    type:item.lbo_case_status.label_en
+                    id: item.id,
+                    firstName: item.client.first_name,
+                    lastName: item.client.last_name,
+                    loan_amount: item.loan_amount,
+                    company: item.company?.name ?? "未选择服务提供商",
+                    disbursement_date: item.disbursement_date,
+                    repayment_period: item.repayment_period,
+                    caseStatus: item.lbo_case_status,
                 } as CasesTable
             })
         }
     },
-    actions:{
-        async initDataTable(){
+    actions: {
+        async initDataTable() {
             const cases = await comonApi.getCases()
             this.casesList.push(...cases)
         },
         //表头样式定义
-        handleHeaderRowStyle():ColumnStyle<any>{
+        handleHeaderRowStyle(): ColumnStyle<any> {
             return {
                 textAlign: "left",
-                color:"#3A3F63"
+                color: "#3A3F63"
             }
         },
         //行样式
-        handleRowStyle():ColumnStyle<any>{
+        handleRowStyle(): ColumnStyle<any> {
             return {
                 textAlign: "left",
-                padding:0,
-                fontSize:'14px',
-                color:"#3A3F63" ,
-                cursor:"pointer",
-                zIndex:99
+                padding: 0,
+                fontSize: '14px',
+                color: "#3A3F63",
+                cursor: "pointer",
+                zIndex: 99
             }
+        },
+        //更新case状态
+        updateCaseStatus(options: { id: number, caseId: number, label_tc: string, label_en: string }) {
+            this.casesList.forEach(item => {
+                if(item.id == options.caseId){
+                    Object.assign(item.lbo_case_status,{ id:options.id,label_tc:options.label_tc,label_en:options.label_en })
+                }
+            });
         }
     },
 })
