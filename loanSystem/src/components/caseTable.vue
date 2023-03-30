@@ -41,8 +41,6 @@ import useCaseStore, { CasesTable } from '@/store/caseStore'
 import { ElTable, ColumnStyle } from 'element-plus'
 
 const caseStore = useCaseStore()
-//获取数据
-useCaseStore().initDataTable();
 const multipleTableRef = ref<InstanceType<typeof ElTable>>()
 const multipleSelection = ref<CasesTable[]>([])
 const handleSelectionChange = (val: CasesTable[]) => multipleSelection.value = val

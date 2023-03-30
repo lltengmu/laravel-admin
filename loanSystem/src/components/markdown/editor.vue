@@ -21,7 +21,7 @@ const emit = defineEmits(['update:modelValue'])
 nextTick(() => {
     const toastUi = new toastEditor('#MarkdownEditor', `${props.modelValue}`, `${props.height}px`);
     toastUi.editor.on('change', (type: string) => {
-        emit('update:modelValue', toastUi.editor[type == 'markdown' ? 'getMarkdown' : 'getHTML']())
+        emit('update:modelValue', toastUi.editor['getHTML']())
     })
 })
 </script>

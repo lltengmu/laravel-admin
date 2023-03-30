@@ -29,12 +29,6 @@ const options = [
     { id:2,label_en:'pass_to_sp',label_tc:'轉交到服務提供者' },
     { id:5,label_en:'fail',label_tc:'申請失敗' },
 ]
-// const handleCommand = (option:{ id:number,label_tc:string,label_en:string }) => {
-//     // console.log(option);
-//     const target = cases.casesList.filter(item=>item.id == props.caseId);
-//     // Object.assign(target.lbo_case_status,option);
-//     console.log(target);
-// }
 </script>
 
 <style lang="scss" scoped>
