@@ -8,12 +8,6 @@ export default {
     meta: { auth: true, menu: { title: "Dashbord", icon: "fas fa-home",group:false, } },
     children: [
         {
-            name: 'admin.home',
-            path: 'home',
-            meta: { menu: { title: "首页" ,icon:"fab fa-avianex" } },
-            component: () => import('@/views/admin/home.vue')
-        },
-        {
             name: 'admin.dashbord',
             path: 'dashbord',
             meta: { menu: { title: "dashbord" ,icon:"fab fa-artstation" } },

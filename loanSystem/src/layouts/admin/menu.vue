@@ -1,6 +1,6 @@
 
 <template>
-    <div class="admin-menu" :class="{ close: menuService.close.value }">
+    <div class="admin-menu">
         <div class="menu w-[250px] bg-menu-container p-4">
             <!-- 菜单 -->
             <div class="container">
@@ -13,7 +13,7 @@
                             <i class="fas fa-angle-down duration-300" :class="{ 'rotate-180': menu.isClick }"></i>
                         </section>
                     </dt>
-                    <dd :class="menu.isClick && !menuService.close.value ? 'block' : 'hidden'">
+                    <dd :class="menu.isClick ? 'block' : 'hidden'">
                         <div :class="{ active: cmenu.isClick }" v-for="(cmenu, key) of menu.children" :key="key" @click="$router.push({ name: cmenu.route })">
                             <i :class="cmenu.icon" class="mr-2 text-lg"></i>
                             {{ cmenu.title }}
