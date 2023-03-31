@@ -27,7 +27,8 @@ export default defineStore('case', {
     state: () => ({
         currentPage: 1,
         pagesCount:10,
-        casesList: [] as CasesInterface[]
+        casesList: [] as CasesInterface[],
+        pageCounts:[{ id:1,value:5 },{ id:2,value:10 },{ id:3,value:20 }]
     }),
     getters: {
         caseTableData:(state):CasesTable[] => {
@@ -79,6 +80,10 @@ export default defineStore('case', {
         //数据分页显示
         handlePageChange(value:number):void{
             this.currentPage = value
+        },
+        //设置每页显示的数据量
+        setPageCount(value:number):void{
+            this.pagesCount = value;
         }
     },
 })

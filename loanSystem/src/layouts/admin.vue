@@ -7,7 +7,7 @@
                 <div class="relative h-full w-full overflow-x-hidden overflow-y-scroll bg-primary">
                     <router-view #default="{ Component }" mode="out-in">
                         <Transition appear class="animate__animated" :enter-active-class="route.meta.enterClass?? 'animate__fadeInRight'" :leave-active-class="route.meta.leaveClass??'animate__fadeOutLeft'">
-                            <component :is="Component" class="absolute w-full p-6" />
+                            <component :is="Component" class="absolute w-full p-4" />
                         </Transition>
                     </router-view>
                 </div>
