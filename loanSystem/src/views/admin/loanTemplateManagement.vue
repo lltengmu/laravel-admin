@@ -3,7 +3,7 @@
         <p class="text-2xl font-bold mb-4">貸款管理模板</p>
         <el-card class="box-card w-full">
             <section class="md:grid grid-cols-2">
-                <img src="/loanTemplate.jpg" class="rounded-md object-fit w-full" alt="贷款模板图片">
+                <img src="/loanTemplate.jpg" class="rounded-md w-[650px] h-[400px]" alt="贷款模板图片">
                 <div class="px-20 flex flex-col justify-between">
                     <div>
                         <p class="p-2">文本區域</p>
@@ -17,8 +17,8 @@
                 </div>
             </section>
         </el-card>
-        <el-card class="box-card w-full mt-4" :class="{ 'hidden': !showEditor }">
-            <MarkdownEditor :height="250" v-model="content" />
+        <el-card class="box-card w-full mt-4 transition-all duration-700" v-show="showEditor">
+            <MarkdownEditor :height="300" v-model="content" />
         </el-card>
     </div>
 </template>

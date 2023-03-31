@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="grid md:grid-rows-[auto_1fr]">
         <div class="flex justify-between items-center mb-4">
             <p class="text-2xl font-bold">CASE</p>
             <section>
@@ -7,7 +7,9 @@
                 <global-save-button class="ml-2" />
             </section>
         </div>
-        <case-table />
+        <div>
+            <case-table />
+        </div>
     </div>
 </template>
 

@@ -1,10 +1,25 @@
 <template>
     <el-card class="box-card border-none" shadow="always">
         <template #header>
-            header
+            <div class="flex items-center">
+                <section class="h-[32px] rounded-full flex items-center p-2">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" class="outline-none ml-2 input-container" placeholder="Search your customer…">
+                </section>
+                <section>
+                    <el-select class="m-2" placeholder="filter">
+                        <el-option
+                          v-for="item in options"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value"
+                        />
+                      </el-select>
+                </section>
+            </div>
         </template>
         <el-table ref="multipleTableRef" :row-style="caseStore.handleRowStyle"
-            :header-row-style="caseStore.handleHeaderRowStyle" :highlight-current-row="true" height="680px"
+            :header-row-style="caseStore.handleHeaderRowStyle" :highlight-current-row="true"
             :data="caseStore.caseTableData" @selection-change="handleSelectionChange">
             <el-table-column type="selection" width="30px" />
             <el-table-column property="id" label="编号" width="60px" />
@@ -31,7 +46,7 @@
             </el-table-column>
         </el-table>
         <div class="flex justify-end mt-[10px]">
-            <el-pagination background layout="prev, pager, next" :total="50" />
+            <el-pagination background layout="prev, pager, next" :total="caseStore.casesList.length" @current-change="caseStore.handlePageChange" />
         </div>
     </el-card>
 </template>
@@ -44,6 +59,28 @@ const caseStore = useCaseStore()
 const multipleTableRef = ref<InstanceType<typeof ElTable>>()
 const multipleSelection = ref<CasesTable[]>([])
 const handleSelectionChange = (val: CasesTable[]) => multipleSelection.value = val
+const options = [
+  {
+    value: 'Option1',
+    label: 'Option1',
+  },
+  {
+    value: 'Option2',
+    label: 'Option2',
+  },
+  {
+    value: 'Option3',
+    label: 'Option3',
+  },
+  {
+    value: 'Option4',
+    label: 'Option4',
+  },
+  {
+    value: 'Option5',
+    label: 'Option5',
+  },
+]
 </script>
 
 <style lang="scss">

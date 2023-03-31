@@ -26,10 +26,11 @@ export interface CasesTable {
 export default defineStore('case', {
     state: () => ({
         currentPage: 1,
+        pagesCount:10,
         casesList: [] as CasesInterface[]
     }),
     getters: {
-        caseTableData(state) {
+        caseTableData:(state):CasesTable[] => {
             return state.casesList.map(item => {
                 return {
                     id: item.id,
@@ -41,7 +42,7 @@ export default defineStore('case', {
                     repayment_period: item.repayment_period,
                     caseStatus: item.lbo_case_status,
                 } as CasesTable
-            })
+            }).slice(state.pagesCount * (state.currentPage - 1),state.pagesCount * (state.currentPage))
         }
     },
     actions: {
@@ -74,6 +75,10 @@ export default defineStore('case', {
                     Object.assign(item.lbo_case_status,{ id:options.id,label_tc:options.label_tc,label_en:options.label_en })
                 }
             });
+        },
+        //数据分页显示
+        handlePageChange(value:number):void{
+            this.currentPage = value
         }
     },
 })
