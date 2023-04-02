@@ -1,5 +1,9 @@
 <template>
-    <el-dropdown trigger="click" :disabled="props.label_tc=='申請失敗' ? true : false">
+    <button v-if="!props.isComponent" :class="props.label_en">
+            <span>{{ props.label_tc }}</span>
+            <span v-if="props.isComponent" class="fas fa-angle-down ml-1 mt-1 text-gray-500"></span>
+    </button>
+    <el-dropdown v-else trigger="click" :disabled="props.label_tc=='申請失敗' ? true : false">
         <button :class="props.label_en">
             <span>{{ props.label_tc }}</span>
             <span class="fas fa-angle-down ml-1 mt-1 text-gray-500"></span>
@@ -21,6 +25,7 @@ interface Props {
     caseId:number
     label_tc:string,
     label_en:string
+    isComponent:boolean
 }
 const props = defineProps<Props>()
 
@@ -43,18 +48,6 @@ button {
 
     &:hover {
         background: rgba(179, 192, 231, 0.3);
-    }
-
-    &.fail {
-        color: #FF2855;
-    }
-
-    &.pass_to_sp {
-        color: #858EBD;
-    }
-
-    &.submitted {
-        color: #858EBD;
     }
 }
 </style>

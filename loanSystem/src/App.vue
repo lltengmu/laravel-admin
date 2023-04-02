@@ -2,14 +2,14 @@
 </script>
 
 <template>
-    <suspense>
-        <router-view />
-        <template #fallback>
-            <div class="w-screen h-screen z-50 bg-gray-700">loading...</div>
-        </template>
-    </suspense>
+    <router-view v-slot="{ Component }">
+        <Suspense>
+            <component :is="Component" />
+            <template #fallback>
+                <Loading />
+            </template>
+        </Suspense>
+    </router-view>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

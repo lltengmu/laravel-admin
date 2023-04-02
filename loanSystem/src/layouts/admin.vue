@@ -26,7 +26,7 @@ import { useRoute } from 'vue-router';
 import { watch } from 'vue';
 import useCaseStore from '@/store/caseStore';
 //获取数据
-useCaseStore().initDataTable();
+await useCaseStore().initDataTable();
 //获取当前路由
 const route = useRoute();
 //检测路由变化

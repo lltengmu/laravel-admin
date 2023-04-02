@@ -3,8 +3,8 @@
         <p class="text-2xl font-bold mb-4">貸款管理模板</p>
         <el-card class="box-card w-full">
             <section class="md:grid grid-cols-2">
-                <img src="/loanTemplate.jpg" class="rounded-md w-[650px] h-[400px]" alt="贷款模板图片">
-                <div class="px-20 flex flex-col justify-between">
+                <img src="/loanTemplate.jpg" class="rounded-md w-[650px]" alt="贷款模板图片">
+                <div class="flex flex-col justify-between">
                     <div>
                         <p class="p-2">文本區域</p>
                         <hr>
