@@ -25,8 +25,11 @@ import AdminHeader from './admin/adminHeader.vue';
 import { useRoute } from 'vue-router';
 import { watch } from 'vue';
 import useCaseStore from '@/store/caseStore';
-//获取数据
+import clientsStore from '@/store/clientsStore'
+//获取case数据
 await useCaseStore().initDataTable();
+//获取clients数据
+await clientsStore().init();
 //获取当前路由
 const route = useRoute();
 //检测路由变化

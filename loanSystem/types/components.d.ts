@@ -11,6 +11,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AnimateList: typeof import('./../src/components/animateList.vue')['default']
     Breadcrumb: typeof import('./../src/components/breadcrumb.vue')['default']
+    ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElDropdown: typeof import('element-plus/es')['ElDropdown']
@@ -20,6 +21,7 @@ declare module '@vue/runtime-core' {
     ElPagination: typeof import('element-plus/es')['ElPagination']
     ElRow: typeof import('element-plus/es')['ElRow']
     ElSelect: typeof import('element-plus/es')['ElSelect']
+    ElSwitch: typeof import('element-plus/es')['ElSwitch']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
@@ -30,7 +32,6 @@ declare module '@vue/runtime-core' {
     GlobalBanner: typeof import('./../src/components/global/banner.vue')['default']
     GlobalButton: typeof import('./../src/components/global/button.vue')['default']
     GlobalCustomTable: typeof import('./../src/components/global/custom-table.vue')['default']
-    GlobalCutomTable: typeof import('../src/components/global/custom-table.vue')['default']
     GlobalExportButton: typeof import('./../src/components/global/exportButton.vue')['default']
     GlobalHeaderNotAccount: typeof import('./../src/components/global/headerNotAccount.vue')['default']
     GlobalInputOrSelect: typeof import('./../src/components/global/inputOrSelect.vue')['default']

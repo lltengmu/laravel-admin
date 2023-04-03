@@ -8,13 +8,14 @@
             </section>
         </div>
         <div>
-            <global-custom-table />
+            <global-custom-table :data="clients" />
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
-
+import clientsStore from '@/store/clientsStore';
+const clients = clientsStore().clientsTable
 </script>
 
 <style lang="scss" scoped>

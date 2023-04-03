@@ -39,6 +39,7 @@ class ClientFactory extends Factory
             'create_datetime' => date('Y-m-d h:i:s'),
             'update_datetime' => date('Y-m-d h:i:s'),
             'last_login_datetime' => date('Y-m-d h:i:s'),
+            'status'   => mt_rand(0,1)
         ];
     }
 }
