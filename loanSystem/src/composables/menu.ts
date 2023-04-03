@@ -33,8 +33,9 @@ class Menu {
         })
     }
     toggleState(){
+        console.log(111);
         this.close.value = !this.close.value
-        //utils.store.set(CacheEnum.MENU_IS_CLOSE,this.close.value)
+        utils.store.set(CacheEnum.MENU_IS_CLOSE,this.close.value)
     }
     setCurrentMenu(route:RouteLocationNormalized){
         this.menus.value.forEach((item) => {

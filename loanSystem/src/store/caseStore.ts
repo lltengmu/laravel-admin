@@ -120,7 +120,7 @@ export default defineStore('case', {
             return (item.status.id !== 3) && (item.status.id !== 4);
         }),
         approvalManagement: (state): approvalManagement<status>[] => {
-            return state.casesList.filter((item) => item.lbo_case_status.id == 3 || item.lbo_case_status.id ==  4 || item.lbo_case_status.id ==  5)
+            return state.casesList.filter((item) => item.lbo_case_status.id !== 1 && item.lbo_case_status.id !==2 )
                 .map((item) => {
                     return {
                         id: item.id,

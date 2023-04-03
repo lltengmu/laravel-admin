@@ -29,6 +29,8 @@ declare module '@vue/runtime-core' {
     FormHdLink: typeof import('./../src/components/form/hd-link.vue')['default']
     GlobalBanner: typeof import('./../src/components/global/banner.vue')['default']
     GlobalButton: typeof import('./../src/components/global/button.vue')['default']
+    GlobalCustomTable: typeof import('./../src/components/global/custom-table.vue')['default']
+    GlobalCutomTable: typeof import('../src/components/global/custom-table.vue')['default']
     GlobalExportButton: typeof import('./../src/components/global/exportButton.vue')['default']
     GlobalHeaderNotAccount: typeof import('./../src/components/global/headerNotAccount.vue')['default']
     GlobalInputOrSelect: typeof import('./../src/components/global/inputOrSelect.vue')['default']
@@ -41,6 +43,7 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TableMintTable: typeof import('./../src/components/table/mint-table.vue')['default']
+    TableTableHeader: typeof import('./../src/components/table/table-header.vue')['default']
     WangEditorEditor: typeof import('./../src/components/wangEditor/editor.vue')['default']
   }
 }
