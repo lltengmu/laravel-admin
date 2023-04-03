@@ -1,7 +1,7 @@
 <template>
     <div class="grid md:grid-rows-[auto_1fr]">
         <div class="flex justify-between items-center mb-4">
-            <p class="text-2xl font-bold">CASE</p>
+            <p class="text-2xl font-bold">clients</p>
             <section>
                 <global-export-button />
                 <global-save-button class="ml-2" />
