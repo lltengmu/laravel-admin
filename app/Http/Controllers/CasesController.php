@@ -17,7 +17,7 @@ class CasesController extends Controller
      */
     public function index()
     {
-        sleep(1);
+        //sleep(1);
         return Cases::with(['client' => function ($query) {
             $query->select([
                 'id',

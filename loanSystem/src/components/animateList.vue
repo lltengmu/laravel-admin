@@ -1,9 +1,9 @@
 <template>
-    <div class="animate-list">
-        <transition-group appear :tag="props.tag" name="list" @before-enter="onBeforeEnter" @enter="enter">
+    
+        <transition-group class="animate-list" appear :tag="props.tag" name="list" @before-enter="onBeforeEnter" @enter="enter">
             <slot />
         </transition-group>
-    </div>
+    
 </template>
 
 <script setup lang="ts">
@@ -16,7 +16,7 @@ interface Props {
 }
 const props = withDefaults(defineProps<Props>(),{
     tag:'ul',
-    duration:.5,
+    duration:1,
     delay:.2
 })
 //动画函数

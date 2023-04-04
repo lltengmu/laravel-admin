@@ -48,8 +48,8 @@
                         <th>操作</th>
                     </tr>
                 </thead>
-                <tbody class="scrollElement">
-                    <tr v-for="item in renderList" :key="item.id">
+                <animate-list :tag="'tbody'" class="scrollElement">
+                    <tr v-for="(item,index) of renderList" :key="item.id" :data-index="index">
                         <td>
                             <input type="radio">
                         </td>
@@ -72,7 +72,7 @@
                             <el-button plain round type="danger">刪除</el-button>
                         </td>
                     </tr>
-                </tbody>
+                </animate-list>
                 <tfoot>
                     <el-pagination class="float-right" layout="prev, pager, next" :total="data.length" :page-size="pageSize" @current-change="handleCurrentChange" />
                 </tfoot>
@@ -114,7 +114,7 @@ table {
         max-height: 620px;
         overflow-y: scroll;
         tr {
-            padding: 0.85rem;
+            padding: 0.8rem;
             display: grid;
             grid-template-rows: 100%;
             grid-template-columns: 3rem 3rem 5rem 5rem 5rem 1.5fr 1fr 1fr 1fr 2fr;
