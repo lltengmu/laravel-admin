@@ -48,7 +48,7 @@
                         <th>操作</th>
                     </tr>
                 </thead>
-                <animate-list :tag="'tbody'" class="scrollElement">
+                <animate-list tag="tbody" class="scrollElement">
                     <tr v-for="(item,index) of renderList" :key="item.id" :data-index="index">
                         <td>
                             <input type="radio">
@@ -66,10 +66,7 @@
                             <el-switch v-model="item.status" inline-prompt :active-icon="Check" :inactive-icon="Close" />
                         </td>
                         <td>
-                            <el-button plain round color="#4B5EFF">匯出xlsx</el-button>
-                            <el-button plain round color="#4B5EFF">文件查看</el-button>
-                            <el-button plain round color="#4B5EFF">查看</el-button>
-                            <el-button plain round type="danger">刪除</el-button>
+                            <slot name="operation" :id="item.id"></slot>
                         </td>
                     </tr>
                 </animate-list>
@@ -110,9 +107,10 @@ table {
     }
 
     tbody {
-        padding: 0.5rem;
+        padding: 0.3rem;
         max-height: 620px;
         overflow-y: scroll;
+        overflow-x: hidden;
         tr {
             padding: 0.8rem;
             display: grid;

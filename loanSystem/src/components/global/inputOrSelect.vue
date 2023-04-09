@@ -1,8 +1,8 @@
 <template>
     <div class="mt-2 flex-auto p-1 flex flex-col">
         <label for="" class="text-sm">{{ props.title }}<sup class="text-red-500">*</sup>:</label>
-        <el-input v-if="props.isInput" :value="value" @update:value="$event.target.value" class="mt-1" size="large" :placeholder="props.placeholder" />
-        <el-select v-else size="large" >
+        <el-input v-if="props.isInput" class="mt-1" size="large" v-model="props.value" :placeholder="props.placeholder" />
+        <el-select v-else size="large" v-model="props.value" :placeholder="props.placeholder" >
             <el-option
                 v-for="(option,key) in props.options"
                 :key="key"
@@ -28,8 +28,15 @@ interface Props {
     value: string|number;
     options?:options[]
 }
-const value = defineProps(['value'])
-const emit = defineEmits(['updated:value'])
+const props = withDefaults(defineProps<Props>(),{
+    id:1,
+    title:"title",
+    name:"name",
+    icon:"fab fa-angellist",
+    isInput:true,
+    placeholder:"placeholder...",
+    value:1,
+})
 </script>
 
 <style scoped>

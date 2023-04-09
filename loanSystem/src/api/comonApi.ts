@@ -8,7 +8,7 @@ class commenApi {
         })
     }
     public getClients(){
-        return Http.request<clients>({
+        return Http.request<clientsInterface[]>({
             method:"get",
             url:"clients",
         })

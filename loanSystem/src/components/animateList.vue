@@ -16,18 +16,18 @@ interface Props {
 }
 const props = withDefaults(defineProps<Props>(),{
     tag:'ul',
-    duration:1,
+    duration:.5,
     delay:.2
 })
 //动画函数
 const onBeforeEnter = (el: RendererElement) => {
     gasp.set(el, {
-        opacity: 0
+        translateX:'100%'
     })
 }
 const enter = (el: RendererElement) => {
     gasp.to(el, {
-        opacity: 1,
+        translateX:0,
         duration: props.duration,
         delay: el.dataset.index * props.delay
     })
